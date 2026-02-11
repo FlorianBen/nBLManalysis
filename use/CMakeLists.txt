@@ -1,0 +1,8 @@
+add_executable(main main.cpp)
+target_link_libraries(main nBLManalysis)
+
+add_executable(inspect_signal main_inspect_signal.cpp)
+target_link_libraries(inspect_signal nBLManalysis)
+
+add_executable(inspect_event main_inspect_event.cpp)
+target_link_libraries(inspect_event nBLManalysis)
