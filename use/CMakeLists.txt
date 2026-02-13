@@ -6,3 +6,6 @@ target_link_libraries(inspect_signal nBLManalysis)
 
 add_executable(inspect_event main_inspect_event.cpp)
 target_link_libraries(inspect_event nBLManalysis)
+
+add_executable(inspect_event_pileup main_inspect_event_pileup.cpp)
+target_link_libraries(inspect_event_pileup nBLManalysis)

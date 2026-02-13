@@ -56,7 +56,7 @@ Trigger::indexv Trigger::trigger_sig(const std::vector<double> &signal,
         for (auto j = i; j < size; j++) {
           i = j;
 
-          if ((trig_pol * data[j]) < (trig_pol * threshold * 0.5)) {
+          if ((trig_pol * data[j]) < (trig_pol * threshold)) {
             count_multi++;
             if (count_multi > multiplicity) {
               trigf_ind = j - multiplicity;

@@ -17,17 +17,21 @@
 
 int main(int argc, char *argv[]) {
   auto model = ROOT::RNTupleModel::Create();
-  auto reader = ROOT::RNTupleReader::Open(std::move(model), "DSignal", argv[1]);
+  auto reader = ROOT::RNTupleReader::Open(std::move(model), "Events", argv[1]);
   reader->PrintInfo();
-  auto sig = reader->GetView<std::vector<double>>("DSignal.signal");
-  auto dT = reader->GetView<double>("DSignal.dT")(0);
+  auto data = reader->GetView<std::vector<double>>("Event.data");
+  auto dT = 2e-9;
+  auto ToT = reader->GetView<double>("Event.ToT");
+  auto id = reader->GetView<int>("Event.id_signal");
 
-  auto i = 0;
-  if (argc == 3) {
-    i = std::atoi(argv[2]);
+  auto vec = data(0);
+  for (auto entry : *reader) {
+    if (ToT(entry) > 2000e-9) {
+      std::cout << "Found pulse " << id(entry) << std::endl;
+      vec = data(entry);
+      break;
+    }
   }
-
-  auto vec = sig(i);
 
   std::vector<double> time_i(vec.size());
   std::generate(std::begin(time_i), std::end(time_i),
@@ -38,7 +42,7 @@ int main(int argc, char *argv[]) {
   c2->SetGrid();
   auto gr_signal = new TGraph(vec.size(), &time_i[0], &vec[0]);
   gr_signal->Draw();
-  c2->SaveAs("signal.png");
+  c2->SaveAs("pileup.png");
   app.Run();
 
   return 0;

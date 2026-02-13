@@ -21,7 +21,7 @@ void RunTigger::CreateEvents() {
   auto t0 = reader->GetView<TimeStamp>("DSignal.t0");
   auto dT = reader->GetView<double>("DSignal.dT")(0);
 
-  Trigger trig(eTrigger::FALLING, -0.03, 5);
+  Trigger trig(eTrigger::FALLING, -0.03, 3);
   for (auto i : reader->GetEntryRange()) {
     // reader->LoadEntry(i);
     auto vec = sig(i);
@@ -30,6 +30,7 @@ void RunTigger::CreateEvents() {
     for (auto idx : trig.indexes) {
       // Event ev;
       event_f->indexes = idx;
+      event_f->id_signal = i;
       event_f->ProcessEvent(vec, dT);
 
       TimeStamp pulse_ts(ts0);

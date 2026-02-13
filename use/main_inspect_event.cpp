@@ -31,14 +31,12 @@ int main(int argc, char *argv[]) {
 
   std::vector<double> time_i(vec.size());
   std::generate(std::begin(time_i), std::end(time_i),
-                [n = 0, &dT]() mutable { return dT * 1000 * n++; });
+                [n = 0, &dT]() mutable { return dT * n++; });
 
   TApplication app("InspectSignal", &argc, argv);
   TCanvas *c2 = new TCanvas("c1", "Signal", 200, 10, 700, 500);
   auto gr_signal = new TGraph(vec.size(), &time_i[0], &vec[0]);
   gr_signal->Draw();
   app.Run();
-  return 0;
-
   return 0;
 }
