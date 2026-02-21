@@ -19,7 +19,7 @@ void RawConvertorNTpule::Convert() {
   auto model = ROOT::RNTupleModel::Create();
   auto dsignal = model->MakeField<DSignal>("DSignal");
   ROOT::RNTupleWriteOptions options;
-  auto writer = ROOT::RNTupleWriter::Recreate(std::move(model), "DSignal",
+  auto writer = ROOT::RNTupleWriter::Recreate(std::move(model), name,
                                               filename_out, options);
   auto index = 0;
 
@@ -58,4 +58,21 @@ void RawConvertorNTpule::SetFileNameOuput(std::string filename_out) {
 
 void RawConvertorNTpule::SetFolderOutput(std::string folder_out) {
   this->name = folder_out;
+}
+
+void RawConvertorNTpule::SortIndex() {
+  std::sort(filenames_in.begin(), filenames_in.end(),
+            [](const auto &a, const auto &b) { return a.first < b.first; });
+}
+
+void RawConvertorNTpule::SortMedatadata() {
+  std::sort(
+      std::begin(filenames_in), std::end(filenames_in),
+      [this](const auto ele1, const auto ele2) -> bool {
+        LecroyReader reader1(ele1.second, false, false);
+        LecroyReader reader2(ele2.second, false, false);
+        TimeStamp ts1(reader1.GetMetadata().TRIGGER_TIME, Trigtime{0.0, 0.0});
+        TimeStamp ts2(reader2.GetMetadata().TRIGGER_TIME, Trigtime{0.0, 0.0});
+        return ts1 < ts2;
+      });
 }

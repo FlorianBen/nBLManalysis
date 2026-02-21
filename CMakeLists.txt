@@ -8,6 +8,7 @@ find_package(ROOT CONFIG REQUIRED RIO ROOTDataFrame ROOTNTuple ROOTNTupleUtil)
 add_library(nBLManalysis SHARED)
 target_link_libraries(nBLManalysis PUBLIC ROOT::RIO ROOT::ROOTDataFrame ROOT::ROOTNTuple  ROOT::ROOTNTupleUtil)
 target_sources(nBLManalysis PRIVATE 
+    "src/Analysis.cpp"
     "src/DSignal.cpp"
     "src/Event.cpp"
     "src/IOLecroy.cpp"

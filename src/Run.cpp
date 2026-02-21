@@ -21,7 +21,7 @@ void RunTigger::CreateEvents() {
   auto t0 = reader->GetView<TimeStamp>("DSignal.t0");
   auto dT = reader->GetView<double>("DSignal.dT")(0);
 
-  Trigger trig(eTrigger::FALLING, -0.03, 3);
+  Trigger trig(eTrigger::FALLING, -0.05, 3);
   for (auto i : reader->GetEntryRange()) {
     // reader->LoadEntry(i);
     auto vec = sig(i);

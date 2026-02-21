@@ -1,6 +1,9 @@
 add_executable(main main.cpp)
 target_link_libraries(main nBLManalysis)
 
+add_executable(convertor main_convertor.cpp)
+target_link_libraries(convertor nBLManalysis)
+
 add_executable(inspect_signal main_inspect_signal.cpp)
 target_link_libraries(inspect_signal nBLManalysis)
 
@@ -9,3 +12,6 @@ target_link_libraries(inspect_event nBLManalysis)
 
 add_executable(inspect_event_pileup main_inspect_event_pileup.cpp)
 target_link_libraries(inspect_event_pileup nBLManalysis)
+
+add_executable(analysis main_analysis.cpp)
+target_link_libraries(analysis nBLManalysis)

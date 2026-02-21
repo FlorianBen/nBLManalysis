@@ -17,16 +17,16 @@
 
 int main(int argc, char *argv[]) {
 
-  // ScanFolder scan(argv[1], argv[2], argv[3]);
-  // RawConvertorNTpule convertor(scan.GetIndex());
+  ScanFolder scan(argv[1], argv[2], argv[3]);
+  RawConvertorNTpule convertor(scan.GetIndex());
 
-  // convertor.SetName(argv[2]);
-  // convertor.SetFileNameOuput("output.root");
-  // convertor.Convert();
+  convertor.SetName(argv[2]);
+  convertor.SetFileNameOuput("ulom.root");
+  convertor.Convert();
 
-  RunTigger run;
-  run.LoadRNTuple(argv[1]);
-  run.CreateEvents();
+  // RunTigger run;
+  // run.LoadRNTuple(argv[1]);
+  // run.CreateEvents();
 
   // auto model = ROOT::RNTupleModel::Create();
   // auto signals = model->MakeField<DSignal>("signal");
