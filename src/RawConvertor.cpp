@@ -76,3 +76,25 @@ void RawConvertorNTpule::SortMedatadata() {
         return ts1 < ts2;
       });
 }
+
+void RawConvertorNTpule::PrintMedatadata(const int index) {
+  if (index >= filenames_in.size())
+    std::runtime_error("Invalid index");
+  auto file = filenames_in[index];
+  LecroyReader lecroyreader(file.second, false);
+  const auto metadata = lecroyreader.GetMetadata();
+  std::cout << metadata << std::endl;
+}
+
+void RawConvertorNTpule::PrintDateRange() {
+  auto first = *std::begin(filenames_in);
+  LecroyReader lecroyreaderf(first.second, false);
+  auto last = *std::rbegin(filenames_in);
+  LecroyReader lecroyreaderl(last.second, false);
+
+  std::cout << "Run start: " << TimeStamp(lecroyreaderf.GetMetadata().TRIGGER_TIME,
+                         Trigtime{0.0, 0.0}) << std::endl 
+            << "Run stop: " << TimeStamp(lecroyreaderl.GetMetadata().TRIGGER_TIME,
+                         Trigtime{0.0, 0.0})
+            << std::endl;
+}

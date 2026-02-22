@@ -48,4 +48,6 @@ public:
    * \return The list as a vector of pair<int,string>.
    */
   std::vector<std::pair<int, std::string>> GetIndex();
+
+  void PrintInfo();
 };

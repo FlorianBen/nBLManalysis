@@ -398,3 +398,12 @@ bool operator<(const time_stamp &t1, const time_stamp &t2);
  * @return std::ostream&
  */
 std::ostream &operator<<(std::ostream &os, const Trigtime &t);
+
+/**
+ * @brief Ostream insertion operator overload for Lecroy trigger time.
+ *
+ * @param os Ostream object.
+ * @param t Trigtime struct from Lecroy data.
+ * @return std::ostream&
+ */
+std::ostream &operator<<(std::ostream &os, const wavedesc &metadata);

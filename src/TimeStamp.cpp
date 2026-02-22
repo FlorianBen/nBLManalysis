@@ -139,9 +139,10 @@ double TimeStamp::toEpochROOT() const {
 
 std::ostream &operator<<(std::ostream &os, const TimeStamp &ts) {
   std::cout.precision(9);
-  os << ts.year << '/' << (int)ts.month << '/' << (int)ts.day << " "
-     << (int)ts.hour << ":" << zfill((int)ts.minute, 2) << ":"
-     << zfill((int)ts.second, 2) << " + " << std::fixed << ts.frac_sec;
+  os << ts.year << '/' << zfill((int)ts.month, 2) << '/'
+     << zfill((int)ts.day, 2) << " " << (int)ts.hour << ":"
+     << zfill((int)ts.minute, 2) << ":" << zfill((int)ts.second, 2) << " + "
+     << std::fixed << ts.frac_sec;
   return os;
 }
 

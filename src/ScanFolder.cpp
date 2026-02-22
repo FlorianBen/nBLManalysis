@@ -44,3 +44,7 @@ void ScanFolder::SortIndex() {
 std::vector<std::pair<int, std::string>> ScanFolder::GetIndex() {
   return indexs;
 }
+
+void ScanFolder::PrintInfo() {
+  std::cout << "File found: " << indexs.size() << std::endl;
+}

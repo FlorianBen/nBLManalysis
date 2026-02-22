@@ -18,10 +18,12 @@
 int main(int argc, char *argv[]) {
 
   ScanFolder scan(argv[1], argv[2], argv[3]);
+  scan.PrintInfo();
+
   RawConvertorNTpule convertor(scan.GetIndex());
 
-  convertor.SetFileNameOuput(argv[4]);
-  convertor.Convert();
+  convertor.PrintMedatadata(0);
+  convertor.PrintDateRange();
 
   return 0;
 }

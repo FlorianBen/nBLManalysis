@@ -174,6 +174,66 @@ std::ostream &operator<<(std::ostream &os, const Trigtime &t) {
   return os;
 }
 
+std::ostream &operator<<(std::ostream &os, const wavedesc &metadata) {
+  os << "DESCRIPTOR_NAME: " << (char *)metadata.DESCRIPTOR_NAME << std::endl;
+  os << "TEMPLATE_NAME: " << (char *)metadata.TEMPLATE_NAME << std::endl;
+  os << "COMM_TYPE: " << metadata.COMM_TYPE << std::endl;
+  os << "COMM_ORDER: " << metadata.COMM_ORDER << std::endl;
+  os << "WAVE_DESCRIPTOR: " << metadata.WAVE_DESCRIPTOR << std::endl;
+  os << "USER_TEXT: " << metadata.USER_TEXT << std::endl;
+  os << "RES_DESC1: " << metadata.RES_DESC1 << std::endl;
+  os << "TRIGTIME_ARRAY: " << metadata.TRIGTIME_ARRAY << std::endl;
+  os << "RIS_TIME_ARRAY: " << metadata.RIS_TIME_ARRAY << std::endl;
+  os << "RES_ARRAY1: " << metadata.RES_ARRAY1 << std::endl;
+  os << "WAVE_ARRAY_1: " << metadata.WAVE_ARRAY_1 << std::endl;
+  os << "WAVE_ARRAY_2: " << metadata.WAVE_ARRAY_2 << std::endl;
+  os << "RES_ARRAY2: " << metadata.RES_ARRAY2 << std::endl;
+  os << "RES_ARRAY3: " << metadata.RES_ARRAY3 << std::endl;
+  os << "INSTRUMENT_NAME: " << metadata.INSTRUMENT_NAME << std::endl;
+  os << "INSTRUMENT_NUMBER: " << metadata.INSTRUMENT_NUMBER << std::endl;
+  os << "TRACE_LABEL: " << metadata.TRACE_LABEL << std::endl;
+  os << "RESERVED1: " << metadata.RESERVED1 << std::endl;
+  os << "RESERVED2: " << metadata.RESERVED2 << std::endl;
+  os << "WAVE_ARRAY_COUNT: " << metadata.WAVE_ARRAY_COUNT << std::endl;
+  os << "PNTS_PER_SCREEN: " << metadata.PNTS_PER_SCREEN << std::endl;
+  os << "FIRST_VALID_PNT: " << metadata.FIRST_VALID_PNT << std::endl;
+  os << "LAST_VALID_PNT: " << metadata.LAST_VALID_PNT << std::endl;
+  os << "FIRST_POINT: " << metadata.FIRST_POINT << std::endl;
+  os << "SPARSING_FACTOR: " << metadata.SPARSING_FACTOR << std::endl;
+  os << "SEGMENT_INDEX: " << metadata.SEGMENT_INDEX << std::endl;
+  os << "SUBARRAY_COUNT: " << metadata.SUBARRAY_COUNT << std::endl;
+  os << "SWEEPS_PER_ACQ: " << metadata.SWEEPS_PER_ACQ << std::endl;
+  os << "POINTS_PER_PAIR: " << metadata.POINTS_PER_PAIR << std::endl;
+  os << "PAIR_OFFSET: " << metadata.PAIR_OFFSET << std::endl;
+  os << "VERTICAL_GAIN: " << metadata.VERTICAL_GAIN << std::endl;
+  os << "VERTICAL_OFFSET: " << metadata.VERTICAL_OFFSET << std::endl;
+  os << "MAX_VALUE: " << metadata.MAX_VALUE << std::endl;
+  os << "MIN_VALUE: " << metadata.MIN_VALUE << std::endl;
+  os << "NOMINAL_BITS: " << metadata.NOMINAL_BITS << std::endl;
+  os << "NOM_SUBARRAY_COUNT: " << metadata.NOM_SUBARRAY_COUNT << std::endl;
+  os << "HORIZ_INTERVAL: " << metadata.HORIZ_INTERVAL << std::endl;
+  os << "HORIZ_OFFSET: " << metadata.HORIZ_OFFSET << std::endl;
+  os << "VERTUNIT: " << metadata.VERTUNIT << std::endl;
+  os << "HORUNIT: " << metadata.HORUNIT << std::endl;
+  os << "RESERVED3: " << metadata.RESERVED3 << std::endl;
+  os << "RESERVED4: " << metadata.RESERVED4 << std::endl;
+  os << "TRIGGER_TIME: " << metadata.TRIGGER_TIME << std::endl;
+  os << "ACQ_DURATION: " << metadata.ACQ_DURATION << std::endl;
+  os << "RECORD_TYPE: " << metadata.RECORD_TYPE << std::endl;
+  os << "PROCESSING_DONE: " << metadata.PROCESSING_DONE << std::endl;
+  os << "RESERVED5: " << metadata.RESERVED5 << std::endl;
+  os << "RIS_SWEEPS: " << metadata.RIS_SWEEPS << std::endl;
+  os << "TIMEBASE: " << metadata.TIMEBASE << std::endl;
+  os << "VERT_COUPLING: " << metadata.VERT_COUPLING << std::endl;
+  os << "PROBE_ATT: " << metadata.PROBE_ATT << std::endl;
+  os << "FIXED_VERT_GAIN: " << metadata.FIXED_VERT_GAIN << std::endl;
+  os << "BANDWIDTH_LIMIT: " << metadata.BANDWIDTH_LIMIT << std::endl;
+  os << "VERTICAL_VERNIER: " << metadata.VERTICAL_VERNIER << std::endl;
+  os << "ACQ_VERT_OFFSET: " << metadata.ACQ_VERT_OFFSET << std::endl;
+  os << "WAVE_SOURCE: " << metadata.WAVE_SOURCE;
+  return os;
+}
+
 std::chrono::duration<double, std::ratio<1>>
 trc_time_stamp_std(const time_stamp &ts) {
   using c_days = std::chrono::duration<int, std::ratio<86400>>;
@@ -193,7 +253,6 @@ double trc_time_stamp_epoch_unix(const time_stamp &ts) {
   epoch += ts.days * 86400;
   epoch += (ts.months - 1) * 2629746;
   epoch += (ts.year - 1995) * 31556952;
-  // std::cout << std::format("Epoch {}", epoch);
   return epoch;
 }
 

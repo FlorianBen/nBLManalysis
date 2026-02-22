@@ -62,4 +62,9 @@ public:
    * Timestamp.
    */
   void SortMedatadata();
+
+  void PrintMedatadata(const int index = 0);
+
+  void PrintDateRange();
+
 };
