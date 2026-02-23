@@ -17,12 +17,17 @@
 
 int main(int argc, char *argv[]) {
 
+  auto hints = ScanFolder::HintChannelFolder(argv[1]);
+  for (auto hint : hints) {
+    std::cout << hint << std::endl;
+  }
+
   ScanFolder scan(argv[1], argv[2], argv[3]);
   scan.PrintInfo();
 
   RawConvertorNTpule convertor(scan.GetIndex());
 
-  convertor.PrintMedatadata(0);
+  // convertor.PrintMedatadata(0);
   convertor.PrintDateRange();
 
   return 0;
