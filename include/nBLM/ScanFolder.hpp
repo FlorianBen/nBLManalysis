@@ -50,4 +50,11 @@ public:
   std::vector<std::pair<int, std::string>> GetIndex();
 
   void PrintInfo();
+
+  /**
+   * Try to hint channels that may be in the given folder.
+   *
+   * \param folder Folder to look.
+   */
+  static std::vector<std::string> HintChannelFolder(const std::string folder);
 };
